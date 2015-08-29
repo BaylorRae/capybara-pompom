@@ -1,8 +1,7 @@
 # Capybara::PomPom
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/capybara/pompom`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The goal of this gem is to create a DSL for the [Page Object
+Model][page_object_model].
 
 ## Installation
 
@@ -22,7 +21,40 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+**Given:** we have the following page defined.
+
+```ruby
+class LoginPage < Capybara::PomPom::Page
+
+  # uses capybara's find_field(locator)
+  field :username, "Username"
+  field :password, "Password"
+
+  # uses capybara's find_button(locator)
+  button :login_button, "Log In"
+
+  # this page acts on the '/login' url
+  def initialize
+    visit '/login'
+  end
+
+  # Actions
+  # login as a user
+  def login_as(login, pass)
+    username.set(login)
+    password.set(password)
+    login_button.click
+  end
+
+end
+```
+
+**Then:** it can be used like this.
+
+```ruby
+# login steps
+LoginPage.login_as('bob', 'password123')
+```
 
 ## Development
 
@@ -37,3 +69,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+[page_object_model]: https://code.google.com/p/selenium/wiki/PageObjects
