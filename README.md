@@ -1,5 +1,7 @@
 # Capybara::PomPom
 
+[![Gem Version](https://badge.fury.io/rb/capybara-pompom.svg)](http://badge.fury.io/rb/capybara-pompom)
+
 The goal of this gem is to create a DSL for the [Page Object
 Model][page_object_model].
 
