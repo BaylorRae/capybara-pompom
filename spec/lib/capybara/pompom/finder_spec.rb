@@ -9,9 +9,12 @@ module Capybara::PomPom
 
     class FinderExample
       include Finder
+
+      class TableRowExample < Struct.new(:row)
+      end
     end
 
-    context "finders" do
+    context "finders_hash" do
       it "assigns a default hash" do
         expect(FinderExample.finders).to eq({})
       end
@@ -26,6 +29,7 @@ module Capybara::PomPom
           link :example_link, "click here"
           field :example_field, "field-name"
           button :example_button, "button-text"
+          table :example_table, "table-id", TableRowExample
         end
       end
 
@@ -42,6 +46,11 @@ module Capybara::PomPom
       it "creates a finder for a button" do
         allow_any_instance_of(ElementFinder).to receive(:find_button).with("button-text") { element }
         expect(finder.example_button).to eq(element)
+      end
+
+      it "creates a finder for a table" do
+        allow_any_instance_of(TableFinder).to receive(:find).with("table-id")
+        expect(finder.example_table).to be_instance_of(Table)
       end
     end
 

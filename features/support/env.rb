@@ -1,3 +1,4 @@
+require "rspec"
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/cucumber'

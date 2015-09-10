@@ -21,8 +21,9 @@ module Capybara::PomPom
     end
 
     # Returns the Capybara::Element or +wrapper+ if defined.
-    def get
-      element = send(type, locator)
+    def get(scope = nil)
+      scope ||= self
+      element = scope.send(type, locator)
 
       unless wrapper.nil?
         element = wrapper.new(element)

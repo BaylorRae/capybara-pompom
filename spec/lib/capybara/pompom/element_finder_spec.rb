@@ -25,6 +25,12 @@ module Capybara::PomPom
         expect(finder.get).to eq(found_element)
       end
 
+      it "finds within a scope" do
+        element_scope = double(:element_scope)
+        expect(element_scope).to receive(:find_xyz).with("dom-locator")
+        finder.get(element_scope)
+      end
+
       it "wraps the element" do
         finder = ElementFinder.new(:find_with_class, "dom-locator", ExampleWrapper)
         allow(finder).to receive(:find_with_class) { found_element }

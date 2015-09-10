@@ -57,5 +57,14 @@ module Capybara::PomPom
       self.finders[name] = ElementFinder.new(:find_button, locator)
     end
 
+    # Finds a table through +find+
+    #
+    #   table :products_table, "#products", TableRowWrapper
+    #
+    # Returns a Table
+    def table(name, locator, row_wrapper = nil)
+      self.finders[name] = TableFinder.new(:find, locator, row_wrapper)
+    end
+
   end
 end
