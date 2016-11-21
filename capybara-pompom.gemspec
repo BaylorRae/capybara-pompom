@@ -22,7 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "capybara", "~> 2.5"
   spec.add_dependency "activesupport", "~> 4.2"
 
-  spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 11.3"
 
   spec.add_development_dependency "rspec", "~> 3.3"
