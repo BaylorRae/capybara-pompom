@@ -1,4 +1,4 @@
-require "capybara"
+require "capybara/dsl"
 require "capybara/pompom/version"
 require "active_support/core_ext/class/attribute"
 
