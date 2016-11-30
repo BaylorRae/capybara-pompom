@@ -1,6 +1,6 @@
 # Capybara::PomPom
 
-[![Gem Version](https://badge.fury.io/rb/capybara-pompom.svg)](http://badge.fury.io/rb/capybara-pompom)
+[![Build Status](https://travis-ci.org/BaylorRae/capybara-pompom.svg?branch=master)](https://travis-ci.org/BaylorRae/capybara-pompom) [![Code Climate](https://codeclimate.com/github/BaylorRae/capybara-pompom/badges/gpa.svg)](https://codeclimate.com/github/BaylorRae/capybara-pompom) [![Test Coverage](https://codeclimate.com/github/BaylorRae/capybara-pompom/badges/coverage.svg)](https://codeclimate.com/github/BaylorRae/capybara-pompom/coverage)
 
 The goal of this gem is to create a DSL for the [Page Object
 Model][page_object_model].
