@@ -3,14 +3,12 @@ require "spec_helper"
 module Capybara::PomPom
   describe Finder do
 
-    after do
-      FinderExample.finders = {}
-    end
+    before do
+      stub_const('FinderExample', Class)
+      stub_const('TableRowExample', Struct.new(:row))
 
-    class FinderExample
-      include Finder
-
-      class TableRowExample < Struct.new(:row)
+      FinderExample.class_eval do
+        include Finder
       end
     end
 
@@ -25,7 +23,7 @@ module Capybara::PomPom
       let(:finder) { FinderExample.new }
 
       before do
-        class FinderExample
+        FinderExample.class_eval do
           link :example_link, "click here"
           field :example_field, "field-name"
           button :example_button, "button-text"

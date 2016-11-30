@@ -6,7 +6,8 @@ module Capybara::PomPom
     let(:finder) { TableFinder.new(:find_xyz, "table-locator", ExampleRowWrapper) }
     let(:found_table) { double(:capybara_element) }
 
-    class ExampleRowWrapper < TableRow
+    before do
+      stub_const('ExampleRowWrapper', TableRow)
     end
 
     context "get" do

@@ -3,7 +3,8 @@ require "spec_helper"
 module Capybara::PomPom
   describe Page do
 
-    class ExamplePage < Page
+    before do
+      stub_const('ExamplePage', Page)
     end
 
     it "includes Capybara::DSL" do

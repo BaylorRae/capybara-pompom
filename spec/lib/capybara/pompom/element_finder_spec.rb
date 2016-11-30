@@ -5,7 +5,8 @@ module Capybara::PomPom
 
     let(:finder) { ElementFinder.new(:find_xyz, "dom-locator") }
 
-    class ExampleWrapper < Struct.new(:element)
+    before do
+      stub_const('ExampleWrapper', Struct.new(:element))
     end
 
     it "includes Capybara::DSL" do

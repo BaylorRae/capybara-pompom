@@ -3,7 +3,8 @@ require "spec_helper"
 module Capybara::PomPom
   describe Table do
 
-    class ExampleRowWrapper < TableRow
+    before do
+      stub_const('ExampleRowWrapper', TableRow)
     end
 
     context "get_row" do
