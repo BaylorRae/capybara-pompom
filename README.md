@@ -44,7 +44,7 @@ class LoginPage < Capybara::PomPom::Page
   # login as a user
   def login_as(login, pass)
     username.set(login)
-    password.set(password)
+    password.set(pass)
     login_button.click
   end
 
