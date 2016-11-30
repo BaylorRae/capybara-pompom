@@ -2,13 +2,14 @@ require "rspec"
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/cucumber'
-require "selenium-webdriver"
+require 'capybara/webkit'
 require 'capybara/pompom'
 
 Capybara.configure do |config|
-  config.default_driver = :selenium
-  config.javascript_driver = :selenium
+  config.default_driver = :webkit
   config.app_host = 'file://' + File.dirname(__FILE__) + '/../../fixtures/html'
 end
 
-Selenium::WebDriver::Firefox::Binary.path = "#{ENV['HOME']}/Applications/Firefox.app/Contents/MacOS/firefox"
+Capybara::Webkit.configure do |config|
+  config.allow_url("")
+end
