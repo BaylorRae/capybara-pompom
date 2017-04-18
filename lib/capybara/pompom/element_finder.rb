@@ -11,7 +11,7 @@ module Capybara::PomPom
     # Initializes a new ElementFinder
     #
     # === Parameters
-    # - +type+: the capybara finder. E.g. +find_css+, +find_link+, etc...
+    # - +type+: the capybara finder. E.g. +find+, +find_link+, etc...
     # - +locator+: the locator used by capybara to find element.
     # - +wrapper+ (optional): an instance to wrap the found element in.
     def initialize(type, locator, wrapper = nil)
