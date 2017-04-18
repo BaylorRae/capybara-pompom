@@ -30,6 +30,15 @@ module Capybara::PomPom
       mod.extend Finder
     end
 
+    # Finds a node with +find+
+    #
+    #   css :title, ".title"
+    #
+    # Returns a +Capybara::Node::Element+
+    def css(name, locator)
+      self.finders[name] = ElementFinder.new(:find, locator)
+    end
+
     # Finds a link through +find_link+
     #
     #   link :login_link, "Log In"
@@ -64,6 +73,15 @@ module Capybara::PomPom
     # Returns a Table
     def table(name, locator, row_wrapper = nil)
       self.finders[name] = TableFinder.new(:find, locator, row_wrapper)
+    end
+
+    # Finds a component through +find+
+    #
+    #   component :overview_component, "#overview"
+    #
+    # Returns a Component
+    def component(name, locator)
+      self.finders[name] = ComponentFinder.new(:find, locator)
     end
 
   end

@@ -28,6 +28,8 @@ module Capybara::PomPom
           field :example_field, "field-name"
           button :example_button, "button-text"
           table :example_table, "table-id", TableRowExample
+          component :example_component, "component-id"
+          css :example_css, "css-selector"
         end
       end
 
@@ -49,6 +51,16 @@ module Capybara::PomPom
       it "creates a finder for a table" do
         allow_any_instance_of(TableFinder).to receive(:find).with("table-id")
         expect(finder.example_table).to be_instance_of(Table)
+      end
+
+      it "creates a finder for a component" do
+        allow_any_instance_of(ComponentFinder).to receive(:find).with("component-id")
+        expect(finder.example_component).to be_instance_of(Component)
+      end
+
+      it "creates a finder for a css selector" do
+        allow_any_instance_of(ElementFinder).to receive(:find).with("css-selector") { element }
+        expect(finder.example_css).to eq(element)
       end
     end
 
