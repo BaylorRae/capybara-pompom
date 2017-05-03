@@ -38,6 +38,22 @@ module Capybara::PomPom
 
         expect(finder.get).to be_instance_of(ExampleWrapper)
       end
+
+      it "wraps multiple elements" do
+        e1, e2, e3 = [double(:element_1), double(:element_2), double(:element_3)]
+
+        query = double(:query)
+        allow(query).to receive(:matches_filters?) { true }
+        result = Capybara::Result.new([e1, e2, e3], query)
+        finder = ElementFinder.new(:find_multiple, "multiple-locator", wrapper: ExampleWrapper)
+
+        allow(finder).to receive(:find_multiple) { result }
+        expect(finder.get).to eq([
+          ExampleWrapper.new(e1),
+          ExampleWrapper.new(e2),
+          ExampleWrapper.new(e3)
+        ])
+      end
     end
 
   end

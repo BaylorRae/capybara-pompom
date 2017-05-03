@@ -23,13 +23,19 @@ module Capybara::PomPom
     # Returns the Capybara::Element or +wrapper+ if defined.
     def get(scope = nil)
       scope ||= self
-      element = scope.send(type, locator)
+      wrap_result(scope.send(type, locator))
+    end
 
-      unless wrapper.nil?
-        element = wrapper.new(element)
+    private
+
+    def wrap_result(result)
+      return result if wrapper.nil?
+
+      if result.is_a?(Capybara::Result)
+        return result.map { |r| wrapper.new(r) }
       end
 
-      element
+      wrapper.new(result)
     end
 
   end

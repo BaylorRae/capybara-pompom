@@ -5,4 +5,5 @@ Feature: components
     Then I should be able to wrap a single component
 
   Scenario: multiple components
-    When pending
+    Given I'm on the component page
+    Then I should be able to wrap multiple components

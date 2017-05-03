@@ -6,6 +6,7 @@ module Capybara::PomPom
     before do
       stub_const('FinderExample', Class)
       stub_const('TableRowExample', Struct.new(:row))
+      stub_const('ComponentExample', Component)
 
       FinderExample.class_eval do
         include Finder
@@ -29,6 +30,7 @@ module Capybara::PomPom
           button :example_button, "button-text"
           table :example_table, "table-id", row_wrapper: TableRowExample
           component :example_component, "component-id"
+          components :example_components, "components-selector", wrapper: ComponentExample
           css :example_css, "css-selector"
         end
       end
@@ -56,6 +58,11 @@ module Capybara::PomPom
       it "creates a finder for a component" do
         allow_any_instance_of(ElementFinder).to receive(:find).with("component-id")
         expect(finder.example_component).to be_instance_of(Component)
+      end
+
+      it "creates a finder for multiple components" do
+        allow_any_instance_of(ElementFinder).to receive(:all).with("components-selector")
+        expect(finder.example_components).to be_instance_of(ComponentExample)
       end
 
       it "creates a finder for a css selector" do

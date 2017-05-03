@@ -84,5 +84,14 @@ module Capybara::PomPom
       self.finders[name] = ElementFinder.new(:find, locator, wrapper: Component)
     end
 
+    # Finds components through +all+
+    #
+    #   components :statuses, ".status"
+    #
+    # Returns a Component
+    def components(name, locator, wrapper: nil)
+      self.finders[name] = ElementFinder.new(:all, locator, wrapper: wrapper)
+    end
+
   end
 end
