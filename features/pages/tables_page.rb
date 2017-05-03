@@ -7,7 +7,7 @@ class TablesPage < Capybara::PomPom::Page
     column :column_3, at_index: 3
   end
 
-  table :example_table_1, "#example-table-1", Example1Row
+  table :example_table_1, "#example-table-1", row_wrapper: Example1Row
 
   def should_have_second_row
     row = example_table_1.get_row(2)

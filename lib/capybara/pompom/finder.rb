@@ -68,10 +68,10 @@ module Capybara::PomPom
 
     # Finds a table through +find+
     #
-    #   table :products_table, "#products", TableRowWrapper
+    #   table :products_table, "#products", row_wrapper: TableRowWrapper
     #
     # Returns a Table
-    def table(name, locator, row_wrapper = nil)
+    def table(name, locator, row_wrapper: nil)
       self.finders[name] = TableFinder.new(:find, locator, wrapper: row_wrapper)
     end
 

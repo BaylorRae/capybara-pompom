@@ -27,7 +27,7 @@ module Capybara::PomPom
           link :example_link, "click here"
           field :example_field, "field-name"
           button :example_button, "button-text"
-          table :example_table, "table-id", TableRowExample
+          table :example_table, "table-id", row_wrapper: TableRowExample
           component :example_component, "component-id"
           css :example_css, "css-selector"
         end
