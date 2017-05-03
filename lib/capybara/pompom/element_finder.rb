@@ -14,7 +14,7 @@ module Capybara::PomPom
     # - +type+: the capybara finder. E.g. +find+, +find_link+, etc...
     # - +locator+: the locator used by capybara to find element.
     # - +wrapper+ (optional): an instance to wrap the found element in.
-    def initialize(type, locator, wrapper = nil)
+    def initialize(type, locator, wrapper: nil)
       @type = type
       @locator = locator
       @wrapper = wrapper

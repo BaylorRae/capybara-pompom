@@ -72,7 +72,7 @@ module Capybara::PomPom
     #
     # Returns a Table
     def table(name, locator, row_wrapper = nil)
-      self.finders[name] = TableFinder.new(:find, locator, row_wrapper)
+      self.finders[name] = TableFinder.new(:find, locator, wrapper: row_wrapper)
     end
 
     # Finds a component through +find+
@@ -81,7 +81,7 @@ module Capybara::PomPom
     #
     # Returns a Component
     def component(name, locator)
-      self.finders[name] = ElementFinder.new(:find, locator, Component)
+      self.finders[name] = ElementFinder.new(:find, locator, wrapper: Component)
     end
 
   end

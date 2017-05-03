@@ -33,7 +33,7 @@ module Capybara::PomPom
       end
 
       it "wraps the element" do
-        finder = ElementFinder.new(:find_with_class, "dom-locator", ExampleWrapper)
+        finder = ElementFinder.new(:find_with_class, "dom-locator", wrapper: ExampleWrapper)
         allow(finder).to receive(:find_with_class) { found_element }
 
         expect(finder.get).to be_instance_of(ExampleWrapper)

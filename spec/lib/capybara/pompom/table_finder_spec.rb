@@ -3,7 +3,7 @@ require "spec_helper"
 module Capybara::PomPom
   describe TableFinder do
 
-    let(:finder) { TableFinder.new(:find_xyz, "table-locator", ExampleRowWrapper) }
+    let(:finder) { TableFinder.new(:find_xyz, "table-locator", wrapper: ExampleRowWrapper) }
     let(:found_table) { double(:capybara_element) }
 
     before do
