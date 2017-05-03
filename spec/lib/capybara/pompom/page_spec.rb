@@ -17,9 +17,10 @@ module Capybara::PomPom
         ExamplePage.example('called', 'at class level')
       end
 
-      it "returns an instance of the page" do
-        allow_any_instance_of(ExamplePage).to receive(:example) { nil }
-        expect(ExamplePage.example).to be_a(ExamplePage)
+      it "returns the result of the method" do
+        result = double(:method_result)
+        allow_any_instance_of(ExamplePage).to receive(:example) { result }
+        expect(ExamplePage.example).to be(result)
       end
 
       it "throws exception if method doesn't exist" do

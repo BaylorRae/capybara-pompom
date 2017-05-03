@@ -19,8 +19,6 @@ module Capybara::PomPom
     def self.method_missing(name, *args) # :nodoc:
       page = new
       page.send(name, *args)
-      page
     end
-
   end
 end
