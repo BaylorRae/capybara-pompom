@@ -81,7 +81,7 @@ module Capybara::PomPom
     #
     # Returns a Component
     def component(name, locator)
-      self.finders[name] = ComponentFinder.new(:find, locator)
+      self.finders[name] = ElementFinder.new(:find, locator, Component)
     end
 
   end

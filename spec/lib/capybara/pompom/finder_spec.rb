@@ -54,7 +54,7 @@ module Capybara::PomPom
       end
 
       it "creates a finder for a component" do
-        allow_any_instance_of(ComponentFinder).to receive(:find).with("component-id")
+        allow_any_instance_of(ElementFinder).to receive(:find).with("component-id")
         expect(finder.example_component).to be_instance_of(Component)
       end
 
